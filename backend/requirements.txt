@@ -1,0 +1,15 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+
+youtube-transcript-api==0.6.2
+faiss-cpu==1.7.4
+python-dotenv==1.0.0
+tiktoken==0.5.1
+
+langchain
+langchain-community
+langchain-core
+langchain-huggingface
+
+sentence-transformers

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Transcript RAG Chat</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>📺 YouTube RAG Chat</h1>
+        <button id="settingsBtn" class="settings-btn" title="Settings">
+          ⚙️
+        </button>
+      </div>
+
+      <!-- Settings Modal -->
+      <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Settings</h2>
+            <span class="close-btn">&times;</span>
+          </div>
+          <div class="modal-body">
+            <label for="apiToken">HuggingFace API Token:</label>
+            <input
+              type="password"
+              id="apiToken"
+              placeholder="Enter your HF API token"
+            />
+            <small
+              >Get it from
+              <a href="https://huggingface.co/settings/tokens" target="_blank"
+                >HuggingFace</a
+              ></small
+            >
+
+            <label for="backendUrl">Backend URL:</label>
+            <input
+              type="text"
+              id="backendUrl"
+              placeholder="http://localhost:8000"
+              value="http://localhost:8000"
+            />
+          </div>
+          <div class="modal-footer">
+            <button id="saveSettingsBtn" class="btn-primary">Save</button>
+            <button id="closeSettingsBtn" class="btn-secondary">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Info -->
+      <div id="videoInfo" class="video-info hidden">
+        <p>Video ID: <span id="videoIdDisplay"></span></p>
+        <p id="statusMessage" class="status-message"></p>
+      </div>
+
+      <!-- Error Message -->
+      <div id="errorMessage" class="error-message hidden"></div>
+
+      <!-- Chat Area -->
+      <div class="chat-container hidden" id="chatContainer">
+        <div class="chat-messages" id="chatMessages"></div>
+
+        <div class="chat-input-area">
+          <input
+            type="text"
+            id="questionInput"
+            placeholder="Ask a question about this video..."
+            class="question-input"
+          />
+          <button id="sendBtn" class="send-btn">Send</button>
+        </div>
+      </div>
+
+      <!-- Initial Setup Message -->
+      <div id="setupMessage" class="setup-message">
+        <p>⚙️ <strong>First Time Setup Required</strong></p>
+        <p>
+          Click the settings button (⚙️) above to configure your HuggingFace API
+          token and backend URL.
+        </p>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
