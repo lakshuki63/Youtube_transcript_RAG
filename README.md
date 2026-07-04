@@ -4,12 +4,12 @@ A Chrome extension that allows you to chat with YouTube video transcripts using 
 
 ## Features
 
-- 🎬 Automatically detects YouTube videos
-- 💬 Interactive chat interface in a popup
-- 🔍 Retrieves relevant transcript sections
-- 🤖 Uses Qwen LLM for intelligent responses
-- 🔐 Secure HuggingFace API token management
-- ⚡ Local backend server for processing
+- Automatically detects YouTube videos
+- Interactive chat interface in a popup
+- Retrieves relevant transcript sections
+- Uses Qwen LLM for intelligent responses
+- Secure HuggingFace API token management
+- Local backend server for processing
 
 ## Project Structure
 
@@ -61,8 +61,8 @@ Health check: `http://localhost:8000/health`
 ### 3. Configure the Extension
 
 1. Go to any YouTube video page
-2. Click the extension icon (🎥)
-3. Click the settings button (⚙️)
+2. Click the extension icon 
+3. Click the settings button 
 4. Enter your HuggingFace API token (get one from [here](https://huggingface.co/settings/tokens))
 5. Keep the backend URL as `http://localhost:8000` (or change if running elsewhere)
 6. Click "Save"
