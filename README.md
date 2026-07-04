@@ -33,10 +33,25 @@ yt_chatbot_extension/
 
 ### 1. Backend Setup
 
+First, ensure you have Python 3.11.x installed. Create and activate a virtual environment:
+
+**Windows:**
+```bash
+cd backend
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+**macOS/Linux:**
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
 Install dependencies:
 
 ```bash
-cd backend
 pip install -r requirements.txt
 ```
 
@@ -124,7 +139,7 @@ Clear cached transcripts
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.11.x
 - Chrome browser
 - HuggingFace API token (free)
 - Internet connection
