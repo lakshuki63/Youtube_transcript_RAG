@@ -90,19 +90,37 @@ Health check: `http://localhost:8000/health`
 4. Ask any question about the video content
 5. The AI will provide answers based on the transcript
 
-## How It Works
+## Architecture
 
-1. **Content Script**: Detects YouTube video pages and extracts video IDs
-2. **Backend Server**:
-   - Fetches YouTube transcripts using `youtube-transcript-api`
-   - Splits transcripts into chunks for better processing
-   - Creates FAISS vector embeddings using HuggingFace embeddings
-   - Uses LangChain RAG to retrieve relevant sections
-   - Sends responses to the extension
-3. **Extension Popup**:
-   - Displays chat interface
-   - Manages user settings
-   - Communicates with backend via HTTP requests
+The project consists of two main components: a Chrome Extension (Frontend) and a FastAPI Server (Backend).
+
+### System Workflow
+
+1. **Content Script**: Detects YouTube video pages and extracts the active video ID.
+2. **Extension Popup**: Provides the chat interface, manages user settings, and communicates with the backend via HTTP REST requests.
+3. **Backend Server**:
+   - **Data Retrieval**: Fetches YouTube video transcripts using `youtube-transcript-api`.
+   - **Chunking**: Splits transcripts into manageable chunks using LangChain's TextSplitter.
+   - **Embeddings**: Creates vector embeddings of the chunks using HuggingFace (`BAAI/bge-small`).
+   - **Vector Database**: Stores embeddings locally using FAISS for efficient similarity search.
+   - **Orchestration**: Uses LangChain RAG (Retrieval-Augmented Generation) to retrieve relevant transcript sections.
+   - **LLM Processing**: Generates intelligent responses using the `Qwen2.5-7B` language model via the HuggingFace Inference API.
+
+### Technology Stack
+
+| Layer             | Technology                   | Purpose                 |
+| ----------------- | ---------------------------- | ----------------------- |
+| **Frontend**      | Chrome Extension Manifest v3 | Browser integration     |
+| **Frontend**      | HTML, CSS, JavaScript        | User Interface          |
+| **Storage**       | Chrome Storage API           | Settings storage        |
+| **Backend**       | FastAPI                      | REST API server         |
+| **Backend**       | Python 3.11.x                | Backend language        |
+| **Data**          | YouTubeTranscriptApi         | Fetch captions          |
+| **Chunking**      | LangChain TextSplitter       | Split documents         |
+| **Embeddings**    | HuggingFace (BAAI/bge-small) | Convert text to vectors |
+| **Vector DB**     | FAISS                        | Similarity search       |
+| **LLM**           | Qwen2.5-7B via HuggingFace   | Question answering      |
+| **Orchestration** | LangChain                    | RAG chain setup         |
 
 ## API Endpoints
 
